@@ -1,0 +1,64 @@
+Schulstundentimer
+
+0. 	Vorbereitung des Raspberry PI 3 B
+		# LEDs und Widerstände aufstecken
+			# kein Buzzer -> blaue LED zum Testen: kein 4. Widerstand mitgenommen -> einzeln mit anderem Widerstand testen
+
+1. 	Vorlagedateien aus dem Linux-Kurs:
+		FI25_blink_setup.sh
+		FI25_blink.sh
+		
+2. 	Pin-Belegung
+		pinout
+		grep GPIO$NUMMER /sys/kernel/debug/gpio
+			# rot - GPIO2 - Pin 514
+			# gelb - GPIO3 - Pin 515
+			# grün - GPIO4 - Pin 516
+			# Buzzer - GPIO17 - Pin 529
+		# Steckfläche und PI verkabeln
+			
+3.	Pins als Export festlegen und ausschalten
+		echo $PIN > /sys/class/gpio/export
+		echo out > /sys/class/gpio/gpio$PIN/direction
+			# übernommen aus FI25_blink_setup.sh
+		echo 0 > /sys/class/gpio/gpio$PIN/value
+		
+4. 	Kopieren und Einfügen des Skripts aus FI25_blink.sh
+
+5. 	Pinbelegung anpassen (auf jetzigen PI)
+		# 589 - grün -> 516
+		# 586 - gelb -> 515
+		# 585 - rot -> 514
+		# 594 - Buzzer -> 529
+		
+6. 	Code als Funktionen formatieren
+		# Übersichtlichkeit verbessert
+		# insgesamt weniger Zeilen
+
+
+:'
+Anmerkungen:
+
+1. Bedingte Pinkonfiguration
+Ziel war es, das nur eine Datei ausgeführt werden muss (kein Setup).
+Dementsprechend habe ich die Pinkonfiguration in Abhängigkeit dazu gestellt, ob eine bestimmte Datei (belegung_ok) schon vorhanden ist.
+Wenn nicht, wird die Konfiguration ausgeführt und diese Datei erstellt.
+
+2. Nutzer-Unabhängige Pfade
+Das Programm soll kompatibel sein, dementsprechend muss die Datei, die ich unter $HOME speichern möchte, unabhängig vom Nutzernamen sein.
+Da häufig Systemdateien beschrieben werden, wird das Script mit Administrator-Rechten ausgeführt. 
+Das ändert die Ausgabe von $USER und $LOGNAME zu "root", die von $HOME zu "/home/root".
+Nach langer Suche bin ich auf $SUDO_USER gestoßen, was den gewünschten User angibt.
+
+3. Ausblick
+	3.1 Systemsprache
+	Da die Dateien unter $HOME/Dokumente liegen, muss die Systemsprache Deutsch sein oder unter $HOME ein neuer Ordner "Dokumente" manuell angelegt werden.
+	In Zukunft könnte man evtl. den Pfad sinnvoll ändern.
+
+	3.2 Ordner
+	Aktuell muss der Programmordner in den richtigen Pfad kopiert werden und dann muss die Code-Datei noch manuell ausgeführt werden.
+	Das kann in Zukunft noch optimiert werden, indem man diese Vorgänge in eine auszuführende Datei packt.
+'
+
+
+
