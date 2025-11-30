@@ -1,3 +1,3 @@
-- diesen Ordner in /home/$USER/Dokumente/ ("Dokumente"!) verschieben
+- diesen Ordner (ohne /Vorlage_Linux-Kurs) in /home/$USER/Dokumente/ ("Dokumente"!) verschieben
 - ggf. /home/$USER/Dokumente/schulstundentimer/src/belegung_ok vor der ersten Benutzung löschen
 - ausführen über "sudo bash /home/$USER/Dokumente/schulstundentimer/src/code.sh"
