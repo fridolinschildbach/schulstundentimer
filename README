@@ -1,3 +1,4 @@
-- diesen Ordner (ohne /Vorlage_Linux-Kurs) in /home/$USER/Dokumente/ ("Dokumente"!) verschieben
-- ggf. /home/$USER/Dokumente/schulstundentimer/src/belegung_ok vor der ersten Benutzung löschen
-- ausführen über "sudo bash /home/$USER/Dokumente/schulstundentimer/src/code.sh"
+1. diesen Ordner (ohne /Vorlage_Linux-Kurs) in /home/$USER/Dokumente/ ("Dokumente"!) verschieben
+2. ggf. /home/$USER/Dokumente/schulstundentimer/src/belegung_ok vor der ersten Benutzung löschen
+3. Datum & Uhrzeit über Netzwerk (Zeitserver) oder [sudo date -s "YYYY:MM:DD HH:MM:SS"
+4. ausführen über "sudo bash /home/$USER/Dokumente/schulstundentimer/src/code.sh"
